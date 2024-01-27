@@ -18,6 +18,7 @@ public class ImageOverlayController : MonoBehaviour
     public void Start()
     {
         overlayImage = GetComponent<UIDocument>().rootVisualElement.Q("ItemImage");
+        overlayImage.pickingMode = PickingMode.Ignore;
 
         //---FOR DEBUGGING--------------
         DisplayImageOnMouse(beerImage);

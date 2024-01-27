@@ -5,15 +5,30 @@ using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
+    //main docs
     UIDocument mainScreen;
     VisualElement mainMenuUIRoot;
     VisualElement shopUIRoot;
     VisualElement miniGamesUIRoot;
 
+    //window buttons
     VisualElement openShopButton;
     VisualElement closeShopButton;
     VisualElement openMiniGamesButton;
     VisualElement closeMiniGamesButton;
+
+    //money labels
+    Label mainMenuMoney;
+    Label shopMoney;
+
+    //idle maroz animation
+    public Texture2D marozStanding;
+    public Texture2D marozSitting;
+    VisualElement maroz;
+
+    public float timeBetweenIdle = 2f;
+    float timeLeft;
+    private bool isMarozStanding;
 
     public void Start()
     {
@@ -33,6 +48,32 @@ public class UIManager : MonoBehaviour
         closeMiniGamesButton = miniGamesUIRoot.Q("Close");
         closeMiniGamesButton.RegisterCallback<ClickEvent>(OnMiniGamesClose);
 
+        mainMenuMoney = mainMenuUIRoot.Q<Label>("Money");
+        shopMoney = shopUIRoot.Q<Label>("Money");
+
+        maroz = mainMenuUIRoot.Q("Marozas");
+        timeLeft = timeBetweenIdle;
+        isMarozStanding = true;
+    }
+
+    public void Update()
+    {
+        if (timeLeft <= 0)
+        {
+            if(isMarozStanding)
+            {
+                maroz.style.backgroundImage = marozSitting;
+                isMarozStanding = false;
+                timeLeft = timeBetweenIdle;
+            }
+            else
+            {
+                maroz.style.backgroundImage = marozStanding;
+                isMarozStanding = true;
+                timeLeft = timeBetweenIdle;
+            }
+        }
+        timeLeft -= Time.deltaTime;
     }
 
     public void OnShopOpen(ClickEvent evt)
@@ -54,5 +95,11 @@ public class UIManager : MonoBehaviour
     {
         miniGamesUIRoot.style.display = DisplayStyle.None;
         mainMenuUIRoot.style.opacity = 1f;
+    }
+
+    public void SetMoney(float money)
+    {
+        mainMenuMoney.text = money + " Lt";
+        shopMoney.text = money + " Lt";
     }
 }

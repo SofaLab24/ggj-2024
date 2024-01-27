@@ -16,21 +16,32 @@ public class SlopeCubeController : MonoBehaviour
     public float rotationResetSpeed = 1f; // Speed at which the rotation resets
 
     public float rotationIncreaseSpeed = 1.5f; // Speed at which the rotation increases when moving horizontally
-
     private bool canIncreaseSpeed = true; // Flag to control speed increase
     private bool resettingRotation = false; // Flag to indicate if the rotation is being reset
-
-
+    private float startingZPosition; // Starting Z position of the player
+    public float score; // Score of the player
+    public float scoreMultiplier = 0.00001f; // Multiplier for calculating the score
+    private float timeSinceLastGrounded = 0f; // Timer to track time since last collision
+    private bool isPlayerAlive = true; // Flag to track if the player is alive
+    private const float deathTime = 3f; // Time in seconds to die if no collision
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
         currentDownwardSpeed = initialDownwardSpeed;
+
+        // Record the starting Z position of the player
+        startingZPosition = transform.position.z;
     }
 
     void Update()
     {
+        if (!isPlayerAlive)
+        {
+            return; // If the player has died, no need to execute further update code
+        }
+
         isGrounded = Physics.Raycast(transform.position, -Vector3.up, groundCheckDistance, groundLayers);
 
         if (isGrounded)
@@ -47,6 +58,24 @@ public class SlopeCubeController : MonoBehaviour
         }
 
         ResetYRotationIfNeeded();
+
+        // Update the score based on the player's Z position
+        score = (transform.position.z - startingZPosition) * scoreMultiplier;
+        Debug.Log("Score: " + score.ToString("F2")); // Display the score, formatted to 2 decimal places
+
+        if (!isGrounded)
+        {
+            // Accumulate the time since the last collision
+            timeSinceLastGrounded += Time.deltaTime;
+        }
+
+        // Check if the time since the last collision exceeds the death time
+        if (timeSinceLastGrounded > deathTime)
+        {
+            Debug.Log("You died");
+            isPlayerAlive = false; // Set the player as dead
+            // Additional logic for player death can be added here
+        }
     }
 
     void FixedUpdate()

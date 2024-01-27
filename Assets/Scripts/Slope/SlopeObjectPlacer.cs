@@ -3,6 +3,7 @@ using UnityEngine;
 public class SlopeObjectPlacer : MonoBehaviour
 {
     public GameObject objectToPlace; // The prefab you want to place on the slope
+    public GameObject objectToPlace2; // The second prefab to place on the slope
     public float spacingZ = 2f; // Spacing between objects along the Z-axis
     public float startZ = 0f; // Starting Z position for the first object
     public float initialPlaneLength = 10f; // Initial length of the slope plane along the Z-axis
@@ -13,7 +14,6 @@ public class SlopeObjectPlacer : MonoBehaviour
 
     private float currentZ; // Current Z position for object placement
     private Transform planeTransform;
-    private bool hasPlacedInitialObject = false;
 
     void Start()
     {
@@ -31,7 +31,6 @@ public class SlopeObjectPlacer : MonoBehaviour
 
         planeTransform = transform;
         currentZ = startZ;
-        hasPlacedInitialObject = true; // Initialize hasPlacedInitialObject to true
 
         // Set the initial length of the slope plane
         SetPlaneLength(initialPlaneLength);
@@ -55,8 +54,10 @@ void PlaceObjectOnSlope()
         {
             Vector3 forwardOnSlope = Vector3.ProjectOnPlane(Vector3.forward, hit.normal);
 
-            // Instantiate the object on the slope with a slight downward adjustment
-            GameObject newObject = Instantiate(objectToPlace, hit.point + Vector3.up, Quaternion.LookRotation(forwardOnSlope, hit.normal));
+            GameObject prefabToInstantiate = Random.Range(0f, 1f) <= 0.3f ? objectToPlace2 : objectToPlace;
+
+            // Instantiate the chosen object on the slope
+            GameObject newObject = Instantiate(prefabToInstantiate, hit.point + Vector3.up, Quaternion.LookRotation(forwardOnSlope, hit.normal));
         }
 
         currentZ += spacingZ;

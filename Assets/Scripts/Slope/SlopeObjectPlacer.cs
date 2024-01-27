@@ -40,54 +40,51 @@ public class SlopeObjectPlacer : MonoBehaviour
         InvokeRepeating("PlaceObjectOnSlope", 0f, generationInterval);
     }
 
-    void PlaceObjectOnSlope()
+void PlaceObjectOnSlope()
+{
+    float zPosition = currentZ;
+    float distanceToPlayer = Mathf.Abs(playerTransform.position.z - zPosition);
+
+    if (distanceToPlayer <= 1000f)
     {
-        // Calculate the Z position for the object, starting from currentZ
-        float zPosition = currentZ;
+        float randomXOffset = Random.Range(-maxXOffset, maxXOffset);
+        Vector3 position = new Vector3(playerTransform.position.x + randomXOffset, 0, zPosition);
 
-        // Calculate the distance between the player and the generated object
-        float distanceToPlayer = Mathf.Abs(playerTransform.position.z - zPosition);
-
-        // Check if the object is within 1000 units of the player
-        if (distanceToPlayer <= 1000f)
+        RaycastHit hit;
+        if (Physics.Raycast(position + Vector3.up * 50, Vector3.down, out hit))
         {
-            // Generate a random X offset within the specified range
-            float randomXOffset = Random.Range(-maxXOffset, maxXOffset);
+            Vector3 forwardOnSlope = Vector3.ProjectOnPlane(Vector3.forward, hit.normal);
 
-            Vector3 position = new Vector3(playerTransform.position.x + randomXOffset, 0, zPosition);
-
-            // Raycast down to find the slope
-            RaycastHit hit;
-            if (Physics.Raycast(position + Vector3.up * 50, Vector3.down, out hit))
-            {
-                // Instantiate the object on the slope
-                GameObject newObject = Instantiate(objectToPlace, hit.point, Quaternion.identity);
-
-                // Align object with the slope's normal
-                // This step may need adjustments depending on your object's orientation
-                // newObject.transform.up = hit.normal;
-            }
-
-            // Increase the current Z position for the next object
-            currentZ += spacingZ;
+            // Instantiate the object on the slope with a slight downward adjustment
+            GameObject newObject = Instantiate(objectToPlace, hit.point + Vector3.up, Quaternion.LookRotation(forwardOnSlope, hit.normal));
         }
 
-        // Calculate the maximum length based on player's position
-        float maxPlaneLength = maxPlaneLengthMultiplier * Vector3.Distance(playerTransform.position, planeTransform.position);
-
-        // Adjust the scale of the slope plane to match the new length
-        SetPlaneLength(Mathf.Clamp(maxPlaneLength, initialPlaneLength, float.MaxValue));
+        currentZ += spacingZ;
     }
+}
 
-    void SetPlaneLength(float length)
-    {
-        Vector3 newScale = planeTransform.localScale;
-        newScale.z = length;
-        planeTransform.localScale = newScale;
-    }
+
+void SetPlaneLength(float length)
+{
+    Vector3 newScale = planeTransform.localScale;
+    newScale.z = Mathf.Min(length, initialPlaneLength * maxPlaneLengthMultiplier); // Ensure it doesn't exceed the max length
+    planeTransform.localScale = newScale;
+}
+
 
     void Update()
     {
+        // Check the player's distance from the end of the plane
+        float planeEndZ = planeTransform.position.z + (planeTransform.localScale.z * 0.5f); // Calculate end position of the plane
+        float distanceToEndOfPlane = Mathf.Abs(playerTransform.position.z - planeEndZ);
+
+        // If the player is within 1000 units of the end of the plane, increase the plane length by 500
+        if (distanceToEndOfPlane <= 1000f)
+        {
+            float newPlaneLength = planeTransform.localScale.z + 500f; // Increase the plane's length
+            SetPlaneLength(newPlaneLength);
+        }
+
         // Check if any objectToPlace has been passed by the player and destroy it
         GameObject[] objects = GameObject.FindGameObjectsWithTag("ObjectToPlace");
         foreach (var obj in objects)

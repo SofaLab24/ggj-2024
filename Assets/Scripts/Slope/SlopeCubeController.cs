@@ -74,7 +74,7 @@ void OnCollisionEnter(Collision collision)
     if (collision.gameObject.CompareTag("ObjectToPlace"))
     {
         Debug.Log("Collision detected");
-        currentDownwardSpeed = initialDownwardSpeed + currentDownwardSpeed  * 0.5f;
+        currentDownwardSpeed = initialDownwardSpeed + (currentDownwardSpeed  * 0.1f);
         canIncreaseSpeed = false; // Prevent speed increase after collision
 
         // Reduce the momentum of the cube

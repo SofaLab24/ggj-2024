@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8b5e5f85ef84940f7bd3b5d20deb5487, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,9 +146,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6119c8e0f154f16b5869e8f5568d11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 5
+  initialDownwardSpeed: 1
+  maxDownwardSpeed: 5
+  downwardAcceleration: 0.5
+  currentDownwardSpeed: 0
+  constantMoveSpeed: 2
   groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   groundCheckDistance: 0.6
+  maxYRotation: 20
+  rotationResetSpeed: 1
+  rotationIncreaseSpeed: 0.5

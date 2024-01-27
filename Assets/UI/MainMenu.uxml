@@ -2,7 +2,7 @@
     <ui:VisualElement name="GameScreen" style="flex-grow: 1; width: 50%; background-color: rgb(161, 155, 83); position: absolute; left: 25%; height: 100%;">
         <ui:VisualElement name="Top" style="flex-grow: 1; height: 25%; flex-direction: row;">
             <ui:VisualElement name="Left" style="flex-grow: 1; width: 30%; align-items: center; justify-content: space-around; align-self: stretch;">
-                <ui:Label tabindex="-1" text="2 $" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; white-space: nowrap; font-size: 30px;" />
+                <ui:Label tabindex="-1" text="2 $" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Money" style="-unity-text-align: middle-center; white-space: nowrap; font-size: 30px;" />
             </ui:VisualElement>
             <ui:VisualElement name="Mid" style="flex-grow: 1; width: 40%; align-items: center; justify-content: center;">
                 <ui:Label tabindex="-1" text="Marozou" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 45px; -unity-text-align: middle-center;" />

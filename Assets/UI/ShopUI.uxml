@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; position: absolute; left: 25%;">
+    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; position: absolute; left: 25%; background-color: rgba(149, 144, 123, 0.5);">
         <ui:VisualElement name="Top" style="flex-grow: 1; position: absolute; left: 0; top: 0; width: 100%; height: 20%; align-items: stretch; justify-content: space-between; align-self: stretch; flex-direction: row;">
             <ui:VisualElement name="Left" style="flex-grow: 1; width: 25%; height: 100%; position: absolute; left: 0; top: 0; align-items: center; justify-content: center; align-self: center;">
-                <ui:Label tabindex="-1" text="5 $" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Money" style="font-size: 30px;" />
+                <ui:Label tabindex="-1" text="2.03$" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Money" style="font-size: 25px;" />
             </ui:VisualElement>
             <ui:VisualElement name="Mid" style="flex-grow: 1; width: 50%; height: 100%; left: 25%; top: 0; position: absolute; align-items: center; justify-content: center; align-self: center;">
                 <ui:Label tabindex="-1" text="Shop" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="font-size: 45px;" />
@@ -32,7 +32,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Bot" style="flex-grow: 1; height: 15%; position: absolute; width: 100%; top: 85%; align-items: center; justify-content: center; align-self: center;">
-            <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Back" style="width: 20%; height: 50%;" />
+            <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Close" style="width: 20%; height: 50%;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

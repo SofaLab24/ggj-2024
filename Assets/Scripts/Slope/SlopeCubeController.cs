@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 public class SlopeCubeController : MonoBehaviour
 {
+    private AudioSource audioSource;
     public float initialDownwardSpeed = 100f; // Initial speed of downward movement
     public float maxDownwardSpeed = 200f; // Maximum speed of downward movement
     public float downwardAcceleration = 5f; // Rate of speed increase over time for downward movement
@@ -33,6 +35,7 @@ public class SlopeCubeController : MonoBehaviour
     private Vignette vignette;
     private float lastZPosition; // Tracks the last Z position
     private float timeSinceZChange = 0f; // Time since the last Z position change
+    public TextMeshProUGUI textMeshPro;
 
     void Start()
     {
@@ -42,6 +45,7 @@ public class SlopeCubeController : MonoBehaviour
 
         // Record the starting Z position of the player
         startingZPosition = transform.position.z;
+        audioSource = FindObjectOfType<AudioSource>();
     }
 
     void Update()
@@ -58,7 +62,7 @@ public class SlopeCubeController : MonoBehaviour
             timeSinceLastGrounded = 0f; // Reset timer when grounded
             float moveHorizontal = Input.GetAxis("Horizontal") * constantMoveSpeed;
             Vector3 horizontalMovement = transform.right * moveHorizontal;
-            rb.AddForce(horizontalMovement, ForceMode.Force);
+            rb.AddForce(horizontalMovement, ForceMode.VelocityChange);
 
             if (moveHorizontal != 0)
             {
@@ -88,7 +92,7 @@ public class SlopeCubeController : MonoBehaviour
 
         // Update the score based on the player's Z position
         score = (transform.position.z - startingZPosition) * scoreMultiplier;
-        // Debug.Log("Score: " + score.ToString("F2")); // Display the score, formatted to 2 decimal places
+        textMeshPro.text = "Cash: " + score.ToString("F2") + "Lt";
 
         if (!isGrounded)
         {
@@ -105,19 +109,22 @@ public class SlopeCubeController : MonoBehaviour
         // Check if the time since the last collision exceeds the death time
         if (timeSinceLastGrounded > deathTimeGrounded)
         {
-            Debug.Log("You died");
-            isPlayerAlive = false; // Set the player as dead
-            // Additional logic for player death can be added here
+            Death();
         }
 
         if (timeSinceLastStopped > deathTimeStopped)
         {
-            Debug.Log("You died");
-            isPlayerAlive = false; // Set the player as dead
-            // Additional logic for player death can be added here
+            Death();
         }
+        audioSource.pitch = 1 + (rb.velocity.z / 100);
     }
 
+    void Death()
+    {
+        Debug.Log("You died");
+        isPlayerAlive = false; // Set the player as dead
+        // Additional logic for player death can be added here
+    }
     void FixedUpdate()
     {
         if (isGrounded && canIncreaseSpeed)

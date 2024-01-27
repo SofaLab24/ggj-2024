@@ -90,7 +90,7 @@ void SetPlaneLength(float length)
         GameObject[] objects = GameObject.FindGameObjectsWithTag("ObjectToPlace");
         foreach (var obj in objects)
         {
-            if (obj.transform.position.z < playerTransform.position.z - 10)
+            if (obj.transform.position.z < playerTransform.position.z - 100)
             {
                 Destroy(obj);
             }

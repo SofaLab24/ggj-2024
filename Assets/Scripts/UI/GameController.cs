@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         uiManager = FindFirstObjectByType<UIManager>();
+        UpdateMoney(0);
     }
 
     public void UpdateMoney(float addMoney)

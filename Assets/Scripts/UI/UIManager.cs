@@ -5,6 +5,10 @@ using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
+    //sfx
+    public List<AudioClip> jokes;
+    AudioSource audioSource;
+
     //main docs
     UIDocument mainScreen;
     VisualElement mainMenuUIRoot;
@@ -30,12 +34,25 @@ public class UIManager : MonoBehaviour
     float timeLeft;
     private bool isMarozStanding;
 
-    public void Start()
+    //maroz looking at item
+    public Texture2D marozClosedEyes;
+    public bool isItemBought;
+
+    ImageOverlayController imageOverlay;
+    public void Awake()
     {
         mainScreen = GetComponent<UIDocument>();
 
         mainMenuUIRoot = mainScreen.rootVisualElement.Q("MainMenuUI");
         shopUIRoot = mainScreen.rootVisualElement.Q("ShopUI");
+        mainMenuMoney = mainMenuUIRoot.Q<Label>("Money");
+        shopMoney = shopUIRoot.Q<Label>("Money");
+
+    }
+    public void Start()
+    {
+        audioSource = FindFirstObjectByType<AudioSource>();
+
         miniGamesUIRoot = mainScreen.rootVisualElement.Q("MiniGamesUI");
 
         openShopButton = mainMenuUIRoot.Q("OpenShop");
@@ -48,34 +65,68 @@ public class UIManager : MonoBehaviour
         closeMiniGamesButton = miniGamesUIRoot.Q("Close");
         closeMiniGamesButton.RegisterCallback<ClickEvent>(OnMiniGamesClose);
 
-        mainMenuMoney = mainMenuUIRoot.Q<Label>("Money");
-        shopMoney = shopUIRoot.Q<Label>("Money");
-
         maroz = mainMenuUIRoot.Q("Marozas");
+        maroz.pickingMode = PickingMode.Ignore;
+        maroz.RegisterCallback<ClickEvent>(OnMarozClick);
         timeLeft = timeBetweenIdle;
         isMarozStanding = true;
+        isItemBought = false;
+
+        imageOverlay = FindFirstObjectByType<ImageOverlayController>();
     }
 
     public void Update()
     {
         if (timeLeft <= 0)
         {
-            if(isMarozStanding)
+            if (!isItemBought)
             {
-                maroz.style.backgroundImage = marozSitting;
-                isMarozStanding = false;
-                timeLeft = timeBetweenIdle;
+                if (isMarozStanding)
+                {
+                    maroz.style.backgroundImage = marozSitting;
+                    isMarozStanding = false;
+                    timeLeft = timeBetweenIdle;
+                }
+                else
+                {
+                    maroz.style.backgroundImage = marozStanding;
+                    isMarozStanding = true;
+                    timeLeft = timeBetweenIdle;
+                }
             }
             else
             {
-                maroz.style.backgroundImage = marozStanding;
-                isMarozStanding = true;
-                timeLeft = timeBetweenIdle;
+                if (isMarozStanding)
+                {
+                    maroz.style.backgroundImage = marozSitting;
+                    isMarozStanding = false;
+                    timeLeft = timeBetweenIdle;
+                }
+                else
+                {
+                    maroz.style.backgroundImage = marozClosedEyes;
+                    isMarozStanding = true;
+                    timeLeft = timeBetweenIdle;
+                }
             }
         }
+
         timeLeft -= Time.deltaTime;
     }
-
+    public void SetIsItemBoughtTrue()
+    {
+        isItemBought = true;
+        maroz.pickingMode = PickingMode.Position;
+    }
+    public void OnMarozClick(ClickEvent evt)
+    {
+        //AUDIO MANAGER, LAUNCH INGA SOUND
+        imageOverlay.StopDisplayingImageOnMouse();
+        maroz.pickingMode = PickingMode.Ignore;
+        isItemBought = false;
+        audioSource.clip = jokes[Random.Range(0, jokes.Count)];
+        audioSource.Play();
+    }
     public void OnShopOpen(ClickEvent evt)
     {
         mainMenuUIRoot.style.opacity = 0.3f;

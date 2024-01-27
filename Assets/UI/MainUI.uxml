@@ -2,7 +2,7 @@
     <ui:Template name="MainMenu" src="project://database/Assets/UI/MainMenuUI.uxml?fileID=9197481963319205126&amp;guid=c1cea20da61354f518b7b04c4a7722af&amp;type=3#MainMenuUI" />
     <ui:Template name="MiniGames_Selection" src="project://database/Assets/UI/MiniGamesUI.uxml?fileID=9197481963319205126&amp;guid=01d214b20245d4201a8ade6c5e7f2bf1&amp;type=3#MiniGamesUI" />
     <ui:Template name="ShopUI" src="project://database/Assets/UI/ShopUI.uxml?fileID=9197481963319205126&amp;guid=511ffb3b057fb44c3b6f00f30ee26d8e&amp;type=3#ShopUI" />
-    <ui:VisualElement name="MainBackground" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(149, 144, 123); background-image: url(&apos;project://database/Assets/Art/backgroundTaromatas.png?fileID=2800000&amp;guid=5b6ceb6a37d4a4f529d7e60c5fcc236e&amp;type=3#backgroundTaromatas&apos;); -unity-background-scale-mode: scale-and-crop;">
+    <ui:VisualElement name="MainBackground" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgb(123, 120, 109); background-image: url(&apos;project://database/Assets/Art/backgroundTaromatas.png?fileID=2800000&amp;guid=5b6ceb6a37d4a4f529d7e60c5fcc236e&amp;type=3#backgroundTaromatas&apos;); -unity-background-scale-mode: stretch-to-fill; -unity-background-image-tint-color: rgb(149, 144, 123);">
         <ui:Instance template="MainMenu" name="MainMenuUI" style="position: absolute; width: 100%; height: 100%; visibility: visible;" />
         <ui:Instance template="MiniGames_Selection" name="MiniGamesUI" style="width: 100%; height: 100%; position: absolute; display: none;" />
         <ui:Instance template="ShopUI" name="ShopUI" style="width: 100%; height: 100%; display: none;" />

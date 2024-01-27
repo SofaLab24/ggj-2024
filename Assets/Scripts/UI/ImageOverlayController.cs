@@ -19,10 +19,11 @@ public class ImageOverlayController : MonoBehaviour
     {
         overlayImage = GetComponent<UIDocument>().rootVisualElement.Q("ItemImage");
         overlayImage.pickingMode = PickingMode.Ignore;
+        overlayImage.style.backgroundImage = null;
 
-        //---FOR DEBUGGING--------------
-        DisplayImageOnMouse(beerImage);
-        //------------------------------
+        ////---FOR DEBUGGING--------------
+        //DisplayImageOnMouse(beerImage);
+        ////------------------------------
     }
 
     public void Update()
@@ -44,5 +45,6 @@ public class ImageOverlayController : MonoBehaviour
     public void StopDisplayingImageOnMouse()
     {
         displayImageOnMouse = false;
+        overlayImage.style.backgroundImage = null;
     }
 }

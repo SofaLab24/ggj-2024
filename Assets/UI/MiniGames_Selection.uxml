@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MinigamesMenu.uss?fileID=7433441132597879392&amp;guid=5ee97df4808b64566a0f2d06416fe77e&amp;type=3#MinigamesMenu" />
+    <ui:VisualElement style="flex-grow: 1; width: 50%; height: 100%; position: absolute; left: 25%;">
+        <ui:VisualElement name="Top" style="flex-grow: 1; width: 100%; height: 20%; position: absolute; left: 0; top: 0; align-items: center; justify-content: center; align-self: center;">
+            <ui:Label tabindex="-1" text="Mini Games" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="font-size: 40px; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Mid" style="flex-grow: 1; width: 100%; height: 50%; position: absolute; left: 0; top: 20%;">
+            <ui:VisualElement name="Top" style="flex-grow: 1; position: absolute; left: 0; top: 0; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center; align-self: center;">
+                <ui:Button text="Game1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game1" class="selectGameButton" style="position: absolute; left: 10%;" />
+                <ui:Button text="Game2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game2" class="selectGameButton" style="right: 10%; position: absolute;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Bot" style="flex-grow: 1; position: absolute; left: 0; top: 50%; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center; align-self: center;">
+                <ui:Button text="Game3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game3" class="selectGameButton" style="position: absolute; left: 10%;" />
+                <ui:Button text="Game4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game4" class="selectGameButton" style="right: 10%; position: absolute;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Bot" style="flex-grow: 1; width: 100%; height: 30%; position: absolute; left: 0; top: 70%; align-items: center; justify-content: center; align-self: center;">
+            <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Back" style="width: 25%; height: 30%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

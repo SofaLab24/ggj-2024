@@ -1,29 +1,27 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="MainBackground" style="flex-grow: 1; background-color: rgb(0, 0, 0);">
-        <ui:VisualElement name="GameScreen" style="flex-grow: 1; width: 50%; background-color: rgb(255, 255, 255); position: absolute; left: 25%; height: 100%;">
-            <ui:VisualElement name="Top" style="flex-grow: 1; height: 25%; flex-direction: row;">
-                <ui:VisualElement name="Left" style="flex-grow: 1; width: 30%; align-items: center; justify-content: space-around; align-self: stretch;">
-                    <ui:Label tabindex="-1" text="2 $" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; white-space: nowrap; font-size: 30px;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="Mid" style="flex-grow: 1; width: 40%; align-items: center; justify-content: center;">
-                    <ui:Label tabindex="-1" text="Marozou" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 50px; -unity-text-align: middle-center;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="Right" style="flex-grow: 1; width: 30%; flex-direction: column; align-items: center; justify-content: center; align-self: stretch;">
-                    <ui:Button text="Shop" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-                </ui:VisualElement>
+    <ui:VisualElement name="GameScreen" style="flex-grow: 1; width: 50%; background-color: rgb(161, 155, 83); position: absolute; left: 25%; height: 100%;">
+        <ui:VisualElement name="Top" style="flex-grow: 1; height: 25%; flex-direction: row;">
+            <ui:VisualElement name="Left" style="flex-grow: 1; width: 30%; align-items: center; justify-content: space-around; align-self: stretch;">
+                <ui:Label tabindex="-1" text="2 $" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; white-space: nowrap; font-size: 30px;" />
             </ui:VisualElement>
-            <ui:VisualElement name="Mid" style="flex-grow: 1; height: 50%;">
-                <ui:VisualElement name="Marozas" style="flex-grow: 1; width: 70%; height: 80%; left: 15%; top: 10%; background-image: url(&apos;project://database/Assets/Art/marozas.png?fileID=2800000&amp;guid=4a5891b074bf345129e5d498db4ddc6f&amp;type=3#marozas&apos;); position: absolute; -unity-background-scale-mode: stretch-to-fill;" />
+            <ui:VisualElement name="Mid" style="flex-grow: 1; width: 40%; align-items: center; justify-content: center;">
+                <ui:Label tabindex="-1" text="Marozou" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 45px; -unity-text-align: middle-center;" />
             </ui:VisualElement>
-            <ui:VisualElement name="Bottom" style="flex-grow: 1; height: 25%; flex-direction: row;">
-                <ui:VisualElement name="Left" style="flex-grow: 1; align-items: center; justify-content: center; width: 30%;">
-                    <ui:Button text="Give Item" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-                </ui:VisualElement>
-                <ui:VisualElement name="Mid" style="flex-grow: 1; width: 40%; align-items: center; justify-content: center;">
-                    <ui:Button text="Mini Games" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 75%; height: 33%; font-size: 20px;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="Right" style="flex-grow: 1; width: 30%;" />
+            <ui:VisualElement name="Right" style="flex-grow: 1; width: 30%; flex-direction: column; align-items: center; justify-content: center; align-self: stretch;">
+                <ui:Button text="Shop" parse-escape-sequences="true" display-tooltip-when-elided="true" />
             </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Mid" style="flex-grow: 1; height: 50%;">
+            <ui:VisualElement name="Marozas" style="flex-grow: 1; width: 70%; height: 80%; left: 15%; top: 10%; background-image: url(&apos;project://database/Assets/Art/marozas.png?fileID=2800000&amp;guid=4a5891b074bf345129e5d498db4ddc6f&amp;type=3#marozas&apos;); position: absolute; -unity-background-scale-mode: stretch-to-fill;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Bottom" style="flex-grow: 1; height: 25%; flex-direction: row;">
+            <ui:VisualElement name="Left" style="flex-grow: 1; align-items: center; justify-content: center; width: 30%;">
+                <ui:Button text="Give Item" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 70%; height: 40%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Mid" style="flex-grow: 1; width: 40%; align-items: center; justify-content: center;">
+                <ui:Button text="Mini Games" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 90%; height: 50%; font-size: 20px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Right" style="flex-grow: 1; width: 30%;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

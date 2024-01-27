@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class SlopeCubeController : MonoBehaviour
 {
@@ -22,8 +24,15 @@ public class SlopeCubeController : MonoBehaviour
     public float score; // Score of the player
     public float scoreMultiplier = 0.00001f; // Multiplier for calculating the score
     private float timeSinceLastGrounded = 0f; // Timer to track time since last collision
+    private float timeSinceLastStopped = 0f; // Timer to track time since last collision
     private bool isPlayerAlive = true; // Flag to track if the player is alive
-    private const float deathTime = 3f; // Time in seconds to die if no collision
+    public const float deathTimeGrounded = 3f; // Time in seconds to die if no collision
+    public const float deathTimeStopped = 7f; // Time in seconds to die if no collision
+    public Volume volume;
+    private Bloom bloom;
+    private Vignette vignette;
+    private float lastZPosition; // Tracks the last Z position
+    private float timeSinceZChange = 0f; // Time since the last Z position change
 
     void Start()
     {
@@ -46,7 +55,7 @@ public class SlopeCubeController : MonoBehaviour
 
         if (isGrounded)
         {
-            canIncreaseSpeed = true; // Reset flag when grounded
+            timeSinceLastGrounded = 0f; // Reset timer when grounded
             float moveHorizontal = Input.GetAxis("Horizontal") * constantMoveSpeed;
             Vector3 horizontalMovement = transform.right * moveHorizontal;
             rb.AddForce(horizontalMovement, ForceMode.Force);
@@ -56,12 +65,30 @@ public class SlopeCubeController : MonoBehaviour
                 AdjustYRotation(moveHorizontal);
             }
         }
+        if (Mathf.Abs(transform.position.z - lastZPosition) > 0.001) // Use a small threshold to account for floating-point imprecision
+        {
+            lastZPosition = transform.position.z; // Update the last Z position
+            timeSinceZChange = 0f; // Reset the timer
+        }
+        else
+        {
+            timeSinceZChange += Time.deltaTime; // Accumulate the time
+        }
+
+        if (timeSinceZChange > 1f) // Check if the Z position has not changed for more than 1 second
+        {
+            canIncreaseSpeed = false;
+        }
+        else
+        {
+            canIncreaseSpeed = true;
+        }
 
         ResetYRotationIfNeeded();
 
         // Update the score based on the player's Z position
         score = (transform.position.z - startingZPosition) * scoreMultiplier;
-        Debug.Log("Score: " + score.ToString("F2")); // Display the score, formatted to 2 decimal places
+        // Debug.Log("Score: " + score.ToString("F2")); // Display the score, formatted to 2 decimal places
 
         if (!isGrounded)
         {
@@ -69,8 +96,21 @@ public class SlopeCubeController : MonoBehaviour
             timeSinceLastGrounded += Time.deltaTime;
         }
 
+        if (!canIncreaseSpeed)
+        {
+            // Accumulate the time since the last collision
+            timeSinceLastStopped += Time.deltaTime;
+        }
+
         // Check if the time since the last collision exceeds the death time
-        if (timeSinceLastGrounded > deathTime)
+        if (timeSinceLastGrounded > deathTimeGrounded)
+        {
+            Debug.Log("You died");
+            isPlayerAlive = false; // Set the player as dead
+            // Additional logic for player death can be added here
+        }
+
+        if (timeSinceLastStopped > deathTimeStopped)
         {
             Debug.Log("You died");
             isPlayerAlive = false; // Set the player as dead
@@ -81,7 +121,8 @@ public class SlopeCubeController : MonoBehaviour
     void FixedUpdate()
     {
         if (isGrounded && canIncreaseSpeed)
-        {
+        {   
+            timeSinceLastStopped = 0f; // Reset timer when grounded
             currentDownwardSpeed += downwardAcceleration * Time.fixedDeltaTime;
             currentDownwardSpeed = Mathf.Min(currentDownwardSpeed, maxDownwardSpeed);
 
@@ -103,19 +144,16 @@ void OnCollisionEnter(Collision collision)
     if (collision.gameObject.CompareTag("ObjectToPlace"))
     {
         Debug.Log("Collision detected");
+        volume.profile.TryGet(out bloom);
+        volume.profile.TryGet(out vignette);
+        vignette.intensity.value += 0.05f;
+        bloom.intensity.value *= 5f;
         currentDownwardSpeed = initialDownwardSpeed + (currentDownwardSpeed  * 0.1f);
-        canIncreaseSpeed = false; // Prevent speed increase after collision
 
         // Reduce the momentum of the cube
-        rb.velocity *= 0.5f; // Reduces the velocity to half; adjust the factor as needed
+        rb.velocity *= 0.7f;
     }
 }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - Vector3.up * groundCheckDistance);
-    }
 
     private void AdjustYRotation(float horizontalInput)
     {

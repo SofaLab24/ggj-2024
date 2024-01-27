@@ -403,6 +403,7 @@ MonoBehaviour:
   rotationIncreaseSpeed: 1
   score: 0
   scoreMultiplier: 0.00001
+  volume: {fileID: 1161611028}
 --- !u!114 &977962068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,6 +489,55 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1161611027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161611029}
+  - component: {fileID: 1161611028}
+  m_Layer: 0
+  m_Name: pp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1161611028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161611027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 3e99109f602624138a575e2ae3351ea5, type: 2}
+--- !u!4 &1161611029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161611027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.459366, y: -37.529892, z: 1135.5168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1696331930
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,13 +625,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696331930}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.77, y: -17.46, z: -10}
+  m_LocalRotation: {x: 0.2597462, y: 0, z: 0, w: 0.96567696}
+  m_LocalPosition: {x: 0, y: 10.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.11, y: 0, z: 0}
 --- !u!114 &1696331934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +655,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -764,7 +814,7 @@ MonoBehaviour:
     type: 3}
   objectToPlace2: {fileID: 4299444363299571807, guid: 90669610837044daf9c2b01a034301f5,
     type: 3}
-  spacingZ: 50
+  spacingZ: 30
   startZ: 50
   initialPlaneLength: 2000
   maxPlaneLengthMultiplier: 1000
@@ -779,3 +829,4 @@ SceneRoots:
   - {fileID: 1696331933}
   - {fileID: 1820950572}
   - {fileID: 977962065}
+  - {fileID: 1161611029}

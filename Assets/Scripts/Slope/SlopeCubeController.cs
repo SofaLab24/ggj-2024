@@ -18,6 +18,9 @@ public class SlopeCubeController : MonoBehaviour
     public float rotationIncreaseSpeed = 1.5f; // Speed at which the rotation increases when moving horizontally
 
     private bool canIncreaseSpeed = true; // Flag to control speed increase
+    private bool resettingRotation = false; // Flag to indicate if the rotation is being reset
+
+
 
     void Start()
     {
@@ -66,15 +69,18 @@ public class SlopeCubeController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.CompareTag("ObjectToPlace"))
     {
-        if (collision.gameObject.CompareTag("ObjectToPlace"))
-        {
-            Debug.Log("Collision detected");
-            currentDownwardSpeed = initialDownwardSpeed;
-            canIncreaseSpeed = false; // Prevent speed increase after collision
-        }
+        Debug.Log("Collision detected");
+        currentDownwardSpeed = initialDownwardSpeed + currentDownwardSpeed  * 0.5f;
+        canIncreaseSpeed = false; // Prevent speed increase after collision
+
+        // Reduce the momentum of the cube
+        rb.velocity *= 0.5f; // Reduces the velocity to half; adjust the factor as needed
     }
+}
 
     void OnDrawGizmos()
     {
@@ -90,18 +96,35 @@ public class SlopeCubeController : MonoBehaviour
         transform.eulerAngles = currentRotation;
     }
 
-    private void ResetYRotationIfNeeded()
-    {
-        float currentYRotation = transform.eulerAngles.y;
-        if (currentYRotation > 180) currentYRotation -= 360;
+private void ResetYRotationIfNeeded()
+{
+    // Get the current Y rotation (in euler angles)
+    float currentYRotation = transform.eulerAngles.y;
 
-        if (Mathf.Abs(currentYRotation) > maxYRotation)
+    // Normalize the angle to be between -180 and 180
+    if (currentYRotation > 180) currentYRotation -= 360;
+
+    // Check if the Y rotation is greater than the specified limit or if rotation is being reset
+    if (Mathf.Abs(currentYRotation) > maxYRotation || resettingRotation)
+    {
+        // Set the flag to true as we are in the process of resetting the rotation
+        resettingRotation = true;
+
+        // Determine the target rotation
+        float targetRotation = 0;
+
+        // Gradually reset the Y rotation to 0
+        float newYRotation = Mathf.LerpAngle(currentYRotation, targetRotation, rotationResetSpeed * Time.deltaTime);
+        Vector3 currentRotation = transform.eulerAngles;
+        currentRotation.y = newYRotation;
+        transform.eulerAngles = currentRotation;
+
+        // If the rotation is close enough to 0, stop resetting
+        if (Mathf.Abs(newYRotation) < 0.2) // You can adjust the threshold as needed
         {
-            float targetRotation = 0;
-            float newYRotation = Mathf.LerpAngle(currentYRotation, targetRotation, rotationResetSpeed * Time.deltaTime);
-            Vector3 currentRotation = transform.eulerAngles;
-            currentRotation.y = newYRotation;
-            transform.eulerAngles = currentRotation;
+            resettingRotation = false;
         }
     }
+}
+
 }

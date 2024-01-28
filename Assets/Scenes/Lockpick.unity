@@ -139,7 +139,7 @@ MonoBehaviour:
   innerLock: {fileID: 6047769949993323628}
   pickPosition: {fileID: 4844767033632432915}
   maxAngle: 90
-  lockSpeed: 3
+  lockSpeed: 5
   lockRange: 20
 --- !u!114 &1839962145
 MonoBehaviour:

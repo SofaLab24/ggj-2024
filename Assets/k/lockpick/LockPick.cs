@@ -8,6 +8,7 @@ public class LockPick : MonoBehaviour
     public Camera cam;
     public Transform innerLock;
     public Transform pickPosition;
+    public AudioSource unlockSound;
 
     public float maxAngle = 80;
     public float lockSpeed = 10;
@@ -73,6 +74,7 @@ public class LockPick : MonoBehaviour
             if (eulerAngle < unlockRange.y && eulerAngle > unlockRange.x)
             {
                 Debug.Log("Unlocked");
+                unlockSound.Play();
                 SceneManager.LoadScene("Vincentas-UITest");
                 newLock();
 

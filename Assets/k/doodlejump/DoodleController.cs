@@ -25,4 +25,10 @@ public class DoodleController : MonoBehaviour
         velocity.x = moveX;
         rb.velocity = velocity;
     }
+    public void GetCent()
+    {
+        float coins = PlayerPrefs.GetFloat("money");
+        coins += 0.01f;
+        PlayerPrefs.SetFloat("money", coins);
+    }
 }

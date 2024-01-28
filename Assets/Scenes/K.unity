@@ -294,6 +294,8 @@ MonoBehaviour:
   player: {fileID: 47788416}
   platformPrefab: {fileID: 4386591303788561113, guid: 01b67cf7bee99fa43b75ab90bb5a1d85,
     type: 3}
+  coin: {fileID: 4189646721458884472, guid: 9939b79d63b0042658b15449d67354d8, type: 3}
+  coinSpawnChance: 0.1
 --- !u!61 &100562632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1260,6 +1262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plaformPrefab: {fileID: 4386591303788561113, guid: 01b67cf7bee99fa43b75ab90bb5a1d85,
     type: 3}
+  coin: {fileID: 4189646721458884472, guid: 9939b79d63b0042658b15449d67354d8, type: 3}
+  coinSpawnChance: 0.1
   platformCount: 10
 --- !u!4 &1781952974
 Transform:

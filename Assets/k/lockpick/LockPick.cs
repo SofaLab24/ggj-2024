@@ -66,7 +66,7 @@ public class LockPick : MonoBehaviour
         float lockLerp = Mathf.Lerp(innerLock.eulerAngles.z, lockRotation, Time.deltaTime * lockSpeed);
         innerLock.eulerAngles = new Vector3(0, 0, lockLerp);
 
-        if (lockLerp >= maxRotation - 1)
+        if (lockLerp >= maxRotation - 5)
         {
             if (eulerAngle < unlockRange.y && eulerAngle > unlockRange.x)
             {

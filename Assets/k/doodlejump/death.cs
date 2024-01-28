@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class death : MonoBehaviour
+public class death4 : MonoBehaviour
 {
 
     public GameObject player;

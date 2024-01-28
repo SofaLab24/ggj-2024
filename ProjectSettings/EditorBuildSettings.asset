@@ -4,14 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Vincentas-UITest.unity
-    guid: 1a12607f0a28f4654b4bcac8655b4796
-  - enabled: 1
-    path: Assets/Scenes/teo.unity
-    guid: 2517ff8d2931d4fd5b2b6bfdbf199e04
-  - enabled: 1
-    path: Assets/Scenes/Augal.unity
-    guid: 5cea3eea37c4ae64dacefebf4bf54aae
+  m_Scenes: []
   m_configObjects: {}

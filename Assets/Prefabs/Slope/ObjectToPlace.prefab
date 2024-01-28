@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9219985827729740755}
   - component: {fileID: 5175526896691620613}
   - component: {fileID: 8834199857447246973}
+  - component: {fileID: 5698863289697500293}
   m_Layer: 0
   m_Name: ObjectToPlace
   m_TagString: ObjectToPlace
@@ -107,3 +108,27 @@ CapsuleCollider:
   m_Height: 3.5152335
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: -0.24241662, z: -0.00000011920929}
+--- !u!167 &5698863289697500293
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299444363299571807}
+  m_Enabled: 1
+  m_MinDistance: 5
+  m_MaxDistance: 100
+  m_ReverbPreset: 24
+  m_Room: -1000
+  m_RoomHF: 0
+  m_DecayTime: 8.39
+  m_DecayHFRatio: 1.39
+  m_Reflections: -115
+  m_ReflectionsDelay: 0.002
+  m_Reverb: 985
+  m_ReverbDelay: 0.03
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0

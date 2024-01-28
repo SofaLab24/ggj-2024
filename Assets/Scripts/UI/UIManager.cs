@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     //minigame buttons
     VisualElement bringMarozasButton;
     VisualElement kebabarioButton;
+    VisualElement marozJumpButton;
+    VisualElement enterHouseButton;
 
     //money labels
     Label mainMenuMoney;
@@ -72,8 +74,12 @@ public class UIManager : MonoBehaviour
 
         bringMarozasButton = miniGamesUIRoot.Q("Game1");
         kebabarioButton = miniGamesUIRoot.Q("Game2");
+        marozJumpButton = miniGamesUIRoot.Q("Game3");
+        enterHouseButton = miniGamesUIRoot.Q("Game4");
         bringMarozasButton.RegisterCallback<ClickEvent>(OnBringMarozasClick);
         kebabarioButton.RegisterCallback<ClickEvent>(OnKebabarioClick);
+        marozJumpButton.RegisterCallback<ClickEvent>(OnMarozJumpClick);
+        enterHouseButton.RegisterCallback<ClickEvent>(OnEnterHouseClick);
 
         maroz = mainMenuUIRoot.Q("Marozas");
         maroz.pickingMode = PickingMode.Ignore;
@@ -144,6 +150,14 @@ public class UIManager : MonoBehaviour
     public void OnKebabarioClick(ClickEvent evt)
     {
         SceneManager.LoadScene(2);
+    }
+    public void OnMarozJumpClick(ClickEvent evt)
+    {
+        SceneManager.LoadScene(3);
+    }
+    public void OnEnterHouseClick(ClickEvent evt)
+    {
+        SceneManager.LoadScene(4);
     }
     public void OnShopOpen(ClickEvent evt)
     {

@@ -1,0 +1,17 @@
+* {
+    -unity-font: url('project://database/Assets/fonts/Buran%20USSR.ttf?fileID=12800000&guid=c9c53b7d56e174e85a45388cc2e303b1&type=3#Buran USSR');
+    -unity-font-definition: url('project://database/Assets/fonts/Buran%20USSR%20SDF.asset?fileID=11400000&guid=b38e06730fbb6470286dd169cf75b91a&type=2#Buran USSR SDF');
+    color: rgb(87, 75, 66);
+}
+
+Button {
+    background-color: rgba(106, 102, 92, 0.77);
+    border-left-color: rgba(72, 67, 55, 0.54);
+    border-right-color: rgba(72, 67, 55, 0.54);
+    border-top-color: rgba(72, 67, 55, 0.54);
+    border-bottom-color: rgba(72, 67, 55, 0.54);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}

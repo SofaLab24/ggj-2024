@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TriangleMarozController : MonoBehaviour
 {
@@ -130,7 +131,8 @@ public void BecomeDrunk()
 
     public void Die() {
         Debug.Log("U died");
-        // TODO: Implement game over logic
+
+        SceneManager.LoadScene(0);
     }
 
     public void updateCashCounter() {

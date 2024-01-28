@@ -51,8 +51,12 @@ public class KebisController : MonoBehaviour
     // Function to load the main UI scene
     private void LoadMainUI()
     {
+        playerController.Points += PlayerPrefs.GetFloat("money");
+        playerController.Points = Mathf.Round(playerController.Points * 100f) / 100f;
+        PlayerPrefs.SetFloat("money", playerController.Points);
         // TODO: Implement win logic
         Debug.Log("You win!");
         Debug.Log("Scored points: " + playerController.Points);
+        SceneManager.LoadScene(0);
     }
 }

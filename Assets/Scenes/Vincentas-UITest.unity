@@ -614,10 +614,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3dd9d8e62598f9042882266c08e64dfb, type: 3}
   - {fileID: 8300000, guid: ac9848d83215fc04791f290c7a514e95, type: 3}
   - {fileID: 8300000, guid: 0417d3d1db39d4e46982defd12ef12be, type: 3}
-  marozStanding: {fileID: 2800000, guid: 931234b694e104f18817b9e6ed33a477, type: 3}
-  marozSitting: {fileID: 2800000, guid: 987d7376b720b4942ad88fab794ab1ea, type: 3}
+  marozStanding: {fileID: 2800000, guid: bfa2645897b47e644a75b52ee349a143, type: 3}
+  marozSitting: {fileID: 2800000, guid: 335f829ea7c3c93429d042a5ccdd3f15, type: 3}
   timeBetweenIdle: 0.5
-  marozClosedEyes: {fileID: 2800000, guid: bf1df1cabc3e44dee9ec396faf948c44, type: 3}
+  marozClosedEyes: {fileID: 2800000, guid: 2f92eee06debc45ba8a8c90e383a0aaa, type: 3}
   isItemBought: 0
 --- !u!114 &2130607944
 MonoBehaviour:

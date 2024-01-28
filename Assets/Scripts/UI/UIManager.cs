@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     VisualElement closeShopButton;
     VisualElement openMiniGamesButton;
     VisualElement closeMiniGamesButton;
+    VisualElement quitButton;
 
     //minigame buttons
     VisualElement bringMarozasButton;
@@ -71,6 +72,9 @@ public class UIManager : MonoBehaviour
         closeShopButton.RegisterCallback<ClickEvent>(OnShopClose);
         closeMiniGamesButton = miniGamesUIRoot.Q("Close");
         closeMiniGamesButton.RegisterCallback<ClickEvent>(OnMiniGamesClose);
+
+        quitButton = mainMenuUIRoot.Q("Quit");
+        quitButton.RegisterCallback<ClickEvent>(OnQuitClick);
 
         bringMarozasButton = miniGamesUIRoot.Q("Game1");
         kebabarioButton = miniGamesUIRoot.Q("Game2");
@@ -142,6 +146,10 @@ public class UIManager : MonoBehaviour
         isItemBought = false;
         audioSource.clip = jokes[Random.Range(0, jokes.Count)];
         audioSource.Play();
+    }
+    public void OnQuitClick(ClickEvent evt)
+    {
+        Application.Quit();
     }
     public void OnBringMarozasClick(ClickEvent evt)
     {

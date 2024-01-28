@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     public void UpdateMoney(float addMoney)
     {
         money += addMoney;
+        money = Mathf.Round(money * 100f) / 100f;
         uiManager.SetMoney(money);
         PlayerPrefs.SetFloat("money", money);
     }

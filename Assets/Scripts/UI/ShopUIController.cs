@@ -42,6 +42,7 @@ public class ShopUIController : MonoBehaviour
     {
         if (CheckPrice(item1Cost))
         {
+            Debug.Log("nu");
             overlayController.DisplayImageOnMouse(overlayController.cigaretteImage);
             gameController.UpdateMoney(-item1Cost);
             uiManager.SetIsItemBoughtTrue();
@@ -77,6 +78,8 @@ public class ShopUIController : MonoBehaviour
 
     private bool CheckPrice(float itemPrice)
     {
-        return itemPrice <= gameController.money;
+        Debug.Log("checking " + itemPrice + " <= " + gameController.money);
+        Debug.Log(itemPrice <= gameController.money);
+        return Mathf.Approximately(itemPrice, gameController.money) || itemPrice < gameController.money;
     }
 }

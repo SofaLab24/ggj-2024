@@ -20,6 +20,7 @@ public class death4 : MonoBehaviour
             collision.gameObject.transform.position = new Vector2(Random.Range(-5.5f, 5.5f), player.transform.position.y + 14 + Random.Range(0.2f, 1.0f));
 
         }
+
         //myPlat = (GameObject) Instantiate(platformPrefab, new Vector2(Random.Range(-10f, 10f), player.transform.position.y + 10 + Random.Range(0f, 0.5f)), Quaternion.identity);  
         //Destroy(collision.gameObject);
     }

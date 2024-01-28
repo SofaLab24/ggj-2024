@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
             Sp1.y += Random.Range(2f, 4f);
             Sp1.x = Random.Range(-5f, 5f);
             Instantiate(plaformPrefab, Sp1, Quaternion.identity);
-
+            // coin
         }
 
     }

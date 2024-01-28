@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LockPick : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LockPick : MonoBehaviour
     public Transform innerLock;
     public Transform pickPosition;
 
-    public float maxAngle = 90;
+    public float maxAngle = 80;
     public float lockSpeed = 10;
 
     [Range(1, 25)]
@@ -66,11 +67,13 @@ public class LockPick : MonoBehaviour
         float lockLerp = Mathf.Lerp(innerLock.eulerAngles.z, lockRotation, Time.deltaTime * lockSpeed);
         innerLock.eulerAngles = new Vector3(0, 0, lockLerp);
 
-        if (lockLerp >= maxRotation - 5)
+        
+        if (lockLerp >= maxRotation - 1)
         {
             if (eulerAngle < unlockRange.y && eulerAngle > unlockRange.x)
             {
-                Debug.Log("Unlocked!");
+                Debug.Log("Unlocked");
+                SceneManager.LoadScene("Vincentas-UITest");
                 newLock();
 
                 movePick = true;
@@ -78,8 +81,8 @@ public class LockPick : MonoBehaviour
             }
             else
             {
-                float randomRotation = Random.insideUnitCircle.x;
-                transform.eulerAngles += new Vector3(0, 0, Random.Range(-randomRotation, randomRotation));
+               // float randomRotation = Random.insideUnitCircle.x;
+                //transform.eulerAngles += new Vector3(0, 0, Random.Range(-randomRotation, randomRotation));
             }
         }
     }
@@ -88,5 +91,7 @@ public class LockPick : MonoBehaviour
     {
         unlockAngle = Random.Range(-maxAngle + lockRange, maxAngle - lockRange);
         unlockRange = new Vector2(unlockAngle - lockRange, unlockAngle + lockRange);
+        Debug.Log(unlockAngle);
+
     }
 }

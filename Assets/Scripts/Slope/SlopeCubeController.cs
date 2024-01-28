@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class SlopeCubeController : MonoBehaviour
 {
-    private AudioSource audioSource;
     public float initialDownwardSpeed = 100f; // Initial speed of downward movement
     public float maxDownwardSpeed = 200f; // Maximum speed of downward movement
     public float downwardAcceleration = 5f; // Rate of speed increase over time for downward movement
@@ -37,6 +36,7 @@ public class SlopeCubeController : MonoBehaviour
     private float lastZPosition; // Tracks the last Z position
     private float timeSinceZChange = 0f; // Time since the last Z position change
     public TextMeshProUGUI textMeshPro;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -46,7 +46,9 @@ public class SlopeCubeController : MonoBehaviour
 
         // Record the starting Z position of the player
         startingZPosition = transform.position.z;
-        audioSource = FindObjectOfType<AudioSource>();
+
+        //Start audioSource after 1s
+        Invoke("StartAudio", 1.3f);
     }
 
     void Update()
@@ -120,6 +122,10 @@ public class SlopeCubeController : MonoBehaviour
         audioSource.pitch = 1 + (rb.velocity.z / 100);
     }
 
+    void StartAudio()
+    {
+        audioSource.Play();
+    }
     void Death()
     {
         Debug.Log("You died");

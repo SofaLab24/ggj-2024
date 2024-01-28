@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SlopeCubeController : MonoBehaviour
 {
@@ -122,7 +123,11 @@ public class SlopeCubeController : MonoBehaviour
     void Death()
     {
         Debug.Log("You died");
+        float money = PlayerPrefs.GetFloat("money");
+        money += float.Parse(score.ToString("F2"));
+        PlayerPrefs.SetFloat("money", money);
         isPlayerAlive = false; // Set the player as dead
+        SceneManager.LoadScene(0);
         // Additional logic for player death can be added here
     }
     void FixedUpdate()

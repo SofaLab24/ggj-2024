@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
@@ -20,6 +21,10 @@ public class UIManager : MonoBehaviour
     VisualElement closeShopButton;
     VisualElement openMiniGamesButton;
     VisualElement closeMiniGamesButton;
+
+    //minigame buttons
+    VisualElement bringMarozasButton;
+    VisualElement kebabarioButton;
 
     //money labels
     Label mainMenuMoney;
@@ -64,6 +69,11 @@ public class UIManager : MonoBehaviour
         closeShopButton.RegisterCallback<ClickEvent>(OnShopClose);
         closeMiniGamesButton = miniGamesUIRoot.Q("Close");
         closeMiniGamesButton.RegisterCallback<ClickEvent>(OnMiniGamesClose);
+
+        bringMarozasButton = miniGamesUIRoot.Q("Game1");
+        kebabarioButton = miniGamesUIRoot.Q("Game2");
+        bringMarozasButton.RegisterCallback<ClickEvent>(OnBringMarozasClick);
+        kebabarioButton.RegisterCallback<ClickEvent>(OnKebabarioClick);
 
         maroz = mainMenuUIRoot.Q("Marozas");
         maroz.pickingMode = PickingMode.Ignore;
@@ -126,6 +136,14 @@ public class UIManager : MonoBehaviour
         isItemBought = false;
         audioSource.clip = jokes[Random.Range(0, jokes.Count)];
         audioSource.Play();
+    }
+    public void OnBringMarozasClick(ClickEvent evt)
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void OnKebabarioClick(ClickEvent evt)
+    {
+        SceneManager.LoadScene(2);
     }
     public void OnShopOpen(ClickEvent evt)
     {

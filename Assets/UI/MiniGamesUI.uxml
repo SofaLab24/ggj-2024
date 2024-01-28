@@ -6,8 +6,8 @@
         </ui:VisualElement>
         <ui:VisualElement name="Mid" style="flex-grow: 1; width: 100%; height: 50%; position: absolute; left: 0; top: 20%;">
             <ui:VisualElement name="Top" style="flex-grow: 1; position: absolute; left: 0; top: 0; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center; align-self: center;">
-                <ui:Button text="Game1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game1" class="selectGameButton" style="position: absolute; left: 10%;" />
-                <ui:Button text="Game2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game2" class="selectGameButton" style="right: 10%; position: absolute;" />
+                <ui:Button text="Bring Marozas Home" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game1" class="selectGameButton" style="position: absolute; left: 10%;" />
+                <ui:Button text="Kebabario" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game2" class="selectGameButton" style="right: 10%; position: absolute;" />
             </ui:VisualElement>
             <ui:VisualElement name="Bot" style="flex-grow: 1; position: absolute; left: 0; top: 50%; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center; align-self: center;">
                 <ui:Button text="Game3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Game3" class="selectGameButton" style="position: absolute; left: 10%;" />

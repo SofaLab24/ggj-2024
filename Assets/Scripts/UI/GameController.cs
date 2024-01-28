@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        // PlayerPrefs.SetFloat("money", 0f);
+        money = PlayerPrefs.GetFloat("money");
+        Debug.Log(money);
         uiManager = FindFirstObjectByType<UIManager>();
         UpdateMoney(0);
     }
@@ -17,5 +20,6 @@ public class GameController : MonoBehaviour
     {
         money += addMoney;
         uiManager.SetMoney(money);
+        PlayerPrefs.SetFloat("money", money);
     }
 }

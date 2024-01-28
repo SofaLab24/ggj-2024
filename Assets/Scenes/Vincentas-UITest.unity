@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4851163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4851165}
+  - component: {fileID: 4851164}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4851164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7deb62499a1164880bc2972313298138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4851165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &543598456
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,8 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8627661b944b4a8791c90706b0d1c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cigaretteImage: {fileID: 8228938214290033325, guid: 553eeb14bc1d14ce78975c9c6fd12ee3,
-    type: 3}
+  cigaretteImage: {fileID: 2800000, guid: 17281094fce6e4881a99c0860d838bbc, type: 3}
   beerImage: {fileID: 4584671053970592468, guid: 553eeb14bc1d14ce78975c9c6fd12ee3,
     type: 3}
   bmwImage: {fileID: 2800000, guid: 727a75301c3d24613a3ebcec4a24c2c8, type: 3}
@@ -636,10 +679,10 @@ MonoBehaviour:
   gameController: {fileID: 0}
   overlayController: {fileID: 0}
   uiManager: {fileID: 0}
-  item1Cost: 0
-  item2Cost: 0
-  item3Cost: 0
-  item4Cost: 0
+  item1Cost: 0.05
+  item2Cost: 0.15
+  item3Cost: 0.5
+  item4Cost: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -649,3 +692,4 @@ SceneRoots:
   - {fileID: 2130607942}
   - {fileID: 2126359953}
   - {fileID: 543598457}
+  - {fileID: 4851165}

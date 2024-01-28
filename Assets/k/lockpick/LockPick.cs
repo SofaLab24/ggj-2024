@@ -64,7 +64,7 @@ public class LockPick : MonoBehaviour
         float lockRotation = ((percentage / 100) * maxAngle) * keyPressTime;
         float maxRotation = (percentage / 100) * maxAngle;
 
-        float lockLerp = Mathf.Lerp(innerLock.eulerAngles.z, lockRotation, Time.deltaTime * lockSpeed);
+        float lockLerp = Mathf.Lerp(innerLock.eulerAngles.z, Mathf.Abs(lockRotation), Time.deltaTime * lockSpeed);
         innerLock.eulerAngles = new Vector3(0, 0, lockLerp);
 
         
@@ -81,8 +81,8 @@ public class LockPick : MonoBehaviour
             }
             else
             {
-               // float randomRotation = Random.insideUnitCircle.x;
-                //transform.eulerAngles += new Vector3(0, 0, Random.Range(-randomRotation, randomRotation));
+               float randomRotation = Random.insideUnitCircle.x;
+                transform.eulerAngles += new Vector3(0, 0, Random.Range(-randomRotation, randomRotation));
             }
         }
     }

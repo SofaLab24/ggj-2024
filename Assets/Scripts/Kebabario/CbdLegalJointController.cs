@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CbdLegalJointController : MonoBehaviour
 {
+    public AudioSource joint; // Reference to your sound effect
     public TriangleMarozController playerController;
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,6 +18,7 @@ public class CbdLegalJointController : MonoBehaviour
             playerController.jumpHeight = jumpHeight / 1.5f;
             playerController.Points += 0.01f;
             playerController.updateCashCounter();
+            joint.Play();
             Destroy(gameObject);
         }
     }

@@ -14,6 +14,8 @@ public class TriangleMarozController : MonoBehaviour
     [SerializeField] public float jumpHeight;
     [SerializeField] public float moveSpeed = 10f;
 
+    public AudioSource AudioJump; // Reference to your sound effect
+
     private float _moveDir;
     private bool isDrunk;
     public float Points;
@@ -55,6 +57,7 @@ public class TriangleMarozController : MonoBehaviour
         if (IsGrounded && _jumpPressed)
         {
             spriteRenderer.sprite = airborneSprite;
+            AudioJump.Play();
 
             _jumpYVel = CalculateJumpVel(jumpHeight);
             _jumpPressed = false;

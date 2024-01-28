@@ -3,12 +3,20 @@ using UnityEngine;
 public class MentasGoomba : MonoBehaviour
 {
     public TriangleMarozController playerController;
+    public AudioClip soundEffect; // Reference to your sound effect
+
+    private AudioSource audioSource;
+    public AudioSource audioIBarzda;
     public float speed = 150f;
     private Rigidbody2D rb;
 private bool facingRight = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Load the sound effect into the AudioSource
+        audioSource.clip = soundEffect;
     }
 
     void Update()
@@ -38,16 +46,19 @@ private bool facingRight = true;
         {
             // Get the direction of collision
             Vector2 direction = other.transform.position - transform.position;
-            if (direction.y > 0)
+            if (direction.y > 0 && playerController.transform.position.y > transform.position.y)
             {
                 playerController.Points += 0.02f;
                 playerController.updateCashCounter();
+                audioIBarzda.Play();
                 // Player jumps on enemy, destroy the enemy
                 Destroy(gameObject);
             }
             else
             {
-                playerController.Die();
+                audioSource.Play();
+                Invoke("playerController.Die", 2f);
+                //FIXME: NESIBAIGIA GEIMAS. BET YRA SOUNDAS FIX
             }
         }
     }

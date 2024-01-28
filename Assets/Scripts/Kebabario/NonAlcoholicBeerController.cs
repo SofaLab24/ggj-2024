@@ -5,7 +5,15 @@ using UnityEngine;
 public class NonAlcoholicBeerController : MonoBehaviour
 {
     // Update is called once per frame
+
+    public AudioSource audioSourceBucha; // Reference to your sound effect
+
+    private AudioSource audioSource;
     public TriangleMarozController playerController;
+
+    void Start() {
+        audioSource = gameObject.AddComponent<AudioSource>();
+    }
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +24,8 @@ public class NonAlcoholicBeerController : MonoBehaviour
             playerController.BecomeDrunk();
             playerController.Points += 0.01f;
             playerController.updateCashCounter();
-            Destroy(gameObject);
+            audioSourceBucha.Play();
+            gameObject.SetActive(false);
         }
     }
 }

@@ -75,6 +75,15 @@ public class LockPick : MonoBehaviour
             {
                 Debug.Log("Unlocked");
                 unlockSound.Play();
+                float coins = PlayerPrefs.GetFloat("money");
+                coins += 0.01f;
+                PlayerPrefs.SetFloat("money", coins);
+                
+
+
+
+
+
                 SceneManager.LoadScene("Vincentas-UITest");
                 newLock();
 
